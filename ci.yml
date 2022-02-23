@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: 'Module to build'
+        required: true
+        default: 'inventory-event-get' 
+        type: choice
+        options:
+        - auth-orders-get
+        - auth-website-id-post
+        - inventory-event-get
+        - order-post
+
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The module to run is ${{ github.event.inputs.module }} 
